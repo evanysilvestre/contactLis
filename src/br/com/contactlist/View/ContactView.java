@@ -1,7 +1,9 @@
-package br.com.contactlist;
+package br.com.contactlist.View;
 
 import java.util.List;
 import java.util.Scanner;
+
+import br.com.contactlist.Model.Contact;
 
 public class ContactView {
 	private Scanner scanner = new Scanner(System.in);
@@ -10,6 +12,8 @@ public class ContactView {
 		System.out.println("\n--- Contact List Menu ---");
         System.out.println("1. Create a new contact");
         System.out.println("2. Show all contacts");
+        System.out.println("3. Update a contact");
+        System.out.println("4. Delete a contact");
         System.out.println("0. Exit");
         System.out.print("Choose an option: ");
         return scanner.nextInt();

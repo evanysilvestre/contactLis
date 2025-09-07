@@ -1,7 +1,10 @@
-package br.com.contactlist;
+package br.com.contactlist.Controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import br.com.contactlist.Model.Contact;
+import br.com.contactlist.View.ContactView;
 
 
 public class ContactController {
@@ -33,4 +36,5 @@ public class ContactController {
 		contacts.add(contact);
 		view.showMessage("Contact created successfully!");
 	}
+	
 }

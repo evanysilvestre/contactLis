@@ -1,4 +1,4 @@
-package br.com.contactlist;
+package br.com.contactlist.Model;
 
 //Model
 public class Contact {
@@ -30,9 +30,5 @@ public class Contact {
 	public String toString() {
 		return "Contact [name=" + name + ",  phoneNumber=" + phoneNumber + "]";
 	}
-	
-	
-	
-	
 
 }
