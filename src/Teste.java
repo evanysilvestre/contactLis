@@ -3,9 +3,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Contact {
+	public int id;
     private String name;
     private String phone;
-    
+   
     public String getName() {
 		return name;
 	}
@@ -21,14 +22,15 @@ class Contact {
 		this.phone = phone;
 	}
 	
-    public Contact(String name, String phone) {
+    public Contact(String name, String phone, int id) {
+    	this.id = id;
         this.name = name;
         this.phone = phone;
     }
     
     @Override
 	public String toString() {
-		return "Contact [name=" + name + ",  phone=" + phone + "]";
+		return "Contact [id="+ id + ", name=" + name + ",  phone=" + phone + "]";
 	}
 }
 
@@ -48,37 +50,56 @@ public class Teste {
         return phone;
 	}
 	
-	static void createContact(String name, String phone) {
-		Contact contact = new Contact(name, phone);
+	static void createContact(String name, String phone, int id) {
+		Contact contact = new Contact(name, phone, id);
         contacts.add(contact);
         System.out.println("Your contact was created! " + contacts);
 	}
 	
-	static void findContact(String name) {
+	static void findContactByName(String name) {
+		boolean found = false;
 		for (Contact c: contacts) {
-			if (name == c.getName()) {
-			contacts.remove(c);
-			System.out.println("Your contact was removed!");
-			System.out.println(contacts);
-		} else {
-			System.out.println("There is no contact with this name! Try another name");
+			if (name.equalsIgnoreCase(c.getName())) {
+				System.out.println(c);
+				found = true;
+				break;
+			}
 		}
-			
-			
+		
+		if (!found) {
+	        System.out.println("There is no contact with this name! Try another name");
+	    }
+	}
+	
+	static void deleteContact(String name) {
+		for (Contact c: contacts) {
+			if (name.equalsIgnoreCase(c.getName())) {
+				contacts.remove(c);
+				System.out.println(c.getName() + " was removed succesfully!");
+				break;
+			} else {
+				System.out.println("There is no contact with this name! Try another name");
+			}
 		}
 	}
 	
     public static void main(String[] args) {
-    	for (int i=0;i<2;i++) {
+    	for (int i=0;i<5;i++) {
     		String askedName = askName();
         	String askedPhone = askPhone();
-        	createContact(askedName, askedPhone);
+        	int id = i+1;
+        	createContact(askedName, askedPhone, id);
     	}
     	
-    	System.out.println(contacts);
     	System.out.println("Enter the name you wanna delete: ");
     	String name = scn.nextLine();
-    	findContact(name);
+    	deleteContact(name);
+    	
+    	System.out.println(contacts);
+    	
+    	/*System.out.println("Enter the name you wanna find: ");
+    	String name = scn.nextLine();
+    	findContactByName(name);*/
     	
         scn.close();
     }
